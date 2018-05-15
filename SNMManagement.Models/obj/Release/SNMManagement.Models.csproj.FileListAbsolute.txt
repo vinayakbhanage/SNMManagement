@@ -1,0 +1,5 @@
+D:\PROJECTS\SNMManagement\SNMManagement.Models\bin\Release\SNMManagement.Models.dll
+D:\PROJECTS\SNMManagement\SNMManagement.Models\bin\Release\SNMManagement.Models.pdb
+D:\PROJECTS\SNMManagement\SNMManagement.Models\obj\Release\SNMManagement.Models.csprojResolveAssemblyReference.cache
+D:\PROJECTS\SNMManagement\SNMManagement.Models\obj\Release\SNMManagement.Models.dll
+D:\PROJECTS\SNMManagement\SNMManagement.Models\obj\Release\SNMManagement.Models.pdb

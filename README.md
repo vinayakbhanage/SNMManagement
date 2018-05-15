@@ -1,2 +1,4 @@
 # SNMManagement
-This is an SNM Management project with Angular 5, Web API and Entity Framework and SQL
+This is a Sant Nirankari Mandal Management project build to manage the information for Mahatmas, Sewadars, Satsangs and other important informations.
+
+This application is built with Angular 5, Web API, Entity Framework and SQL.

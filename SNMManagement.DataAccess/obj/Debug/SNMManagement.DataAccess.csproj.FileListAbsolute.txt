@@ -1,0 +1,10 @@
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\obj\Debug\SNMManagement.DataAccess.csprojResolveAssemblyReference.cache
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\bin\Debug\SNMManagement.DataAccess.dll.config
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\bin\Debug\SNMManagement.DataAccess.dll
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\bin\Debug\SNMManagement.DataAccess.pdb
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\bin\Debug\EntityFramework.dll
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\bin\Debug\EntityFramework.xml
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\obj\Debug\SNMManagement.DataAccess.dll
+D:\PROJECTS\SNMManagement\SNMManagement.DataAccess\obj\Debug\SNMManagement.DataAccess.pdb

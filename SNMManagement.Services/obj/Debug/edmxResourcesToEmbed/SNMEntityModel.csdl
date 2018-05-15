@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SNMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Area">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UnitId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_Area_Unit" FromRole="Areas" ToRole="Units" />
+    <NavigationProperty Name="DutyCharts" Relationship="Self.FK_DutyChart_Area" FromRole="Areas" ToRole="DutyCharts" />
+    <NavigationProperty Name="Satsangs" Relationship="Self.FK_Satsang_Area" FromRole="Areas" ToRole="Satsangs" />
+  </EntityType>
+  <EntityType Name="Attendance">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SatsangId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="SewadarId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AttendanceStatus" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Satsang" Relationship="Self.FK_Attendance_Satsang" FromRole="Attendances" ToRole="Satsangs" />
+    <NavigationProperty Name="Sewadar" Relationship="Self.FK_Attendance_Sewadar" FromRole="Attendances" ToRole="Sewadars" />
+  </EntityType>
+  <EntityType Name="DutyChart">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Month" Type="Int32" Nullable="false" />
+    <Property Name="MonthDesc" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AreaId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Year" Type="Int32" />
+    <NavigationProperty Name="Area" Relationship="Self.FK_DutyChart_Area" FromRole="DutyCharts" ToRole="Areas" />
+    <NavigationProperty Name="DutyGroup" Relationship="Self.FK_DutyChart_DutyGroup" FromRole="DutyCharts" ToRole="DutyGroups" />
+  </EntityType>
+  <EntityType Name="DutyGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UnitId" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="DutyCharts" Relationship="Self.FK_DutyChart_DutyGroup" FromRole="DutyGroups" ToRole="DutyCharts" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_DutyGroups_Units" FromRole="DutyGroups" ToRole="Units" />
+  </EntityType>
+  <EntityType Name="Khetra">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Units" Relationship="Self.FK_Unit_Khetra" FromRole="Khetras" ToRole="Units" />
+  </EntityType>
+  <EntityType Name="Mahatma">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="ResidentialAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="PermanentAddress" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Mobile" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OfficeTelephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="GyanTakenYear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="CorpusAccountNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FamilyCount" Type="Int32" />
+    <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Occupation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SpecialQualities" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Sewadars" Relationship="Self.FK_Sewadar_Mahatma" FromRole="Mahatmas" ToRole="Sewadars" />
+  </EntityType>
+  <EntityType Name="Satsang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SatsangTypeId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UnitId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="AreaId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="StageDutyMahatmaName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SanchalakId" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Area" Relationship="Self.FK_Satsang_Area" FromRole="Satsangs" ToRole="Areas" />
+    <NavigationProperty Name="Attendances" Relationship="Self.FK_Attendance_Satsang" FromRole="Satsangs" ToRole="Attendances" />
+    <NavigationProperty Name="SatsangType" Relationship="Self.FK_Satsang_SatsangType" FromRole="Satsangs" ToRole="SatsangTypes" />
+    <NavigationProperty Name="Unit" Relationship="Self.FK_Satsang_Unit" FromRole="Satsangs" ToRole="Units" />
+  </EntityType>
+  <EntityType Name="SatsangType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Satsangs" Relationship="Self.FK_Satsang_SatsangType" FromRole="SatsangTypes" ToRole="Satsangs" />
+  </EntityType>
+  <EntityType Name="SewadarDesignation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Sewadars" Relationship="Self.FK_Sewadar_Designations" FromRole="SewadarDesignations" ToRole="Sewadars" />
+  </EntityType>
+  <EntityType Name="Sewadar">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PersonalNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MahatmaId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="UnitId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Designation" Type="Int32" />
+    <Property Name="ICardNumber" Type="Decimal" Precision="10" Scale="0" />
+    <Property Name="DutyGroupId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="WeeklyHoliday" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Wing" Type="Int16" />
+    <NavigationProperty Name="Attendances" Relationship="Self.FK_Attendance_Sewadar" FromRole="Sewadars" ToRole="Attendances" />
+    <NavigationProperty Name="Mahatma" Relationship="Self.FK_Sewadar_Mahatma" FromRole="Sewadars" ToRole="Mahatmas" />
+    <NavigationProperty Name="SewadarDesignation" Relationship="Self.FK_Sewadar_Designations" FromRole="Sewadars" ToRole="SewadarDesignations" />
+  </EntityType>
+  <EntityType Name="Unit">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitNumber" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KhetraId" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Areas" Relationship="Self.FK_Area_Unit" FromRole="Units" ToRole="Areas" />
+    <NavigationProperty Name="DutyGroups" Relationship="Self.FK_DutyGroups_Units" FromRole="Units" ToRole="DutyGroups" />
+    <NavigationProperty Name="Khetra" Relationship="Self.FK_Unit_Khetra" FromRole="Units" ToRole="Khetras" />
+    <NavigationProperty Name="Satsangs" Relationship="Self.FK_Satsang_Unit" FromRole="Units" ToRole="Satsangs" />
+  </EntityType>
+  <Association Name="FK_Area_Unit">
+    <End Role="Units" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Areas" Type="Self.Area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Units">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Areas">
+        <PropertyRef Name="UnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DutyChart_Area">
+    <End Role="Areas" Type="Self.Area" Multiplicity="1" />
+    <End Role="DutyCharts" Type="Self.DutyChart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Areas">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DutyCharts">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satsang_Area">
+    <End Role="Areas" Type="Self.Area" Multiplicity="1" />
+    <End Role="Satsangs" Type="Self.Satsang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Areas">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Satsangs">
+        <PropertyRef Name="AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attendance_Satsang">
+    <End Role="Satsangs" Type="Self.Satsang" Multiplicity="1" />
+    <End Role="Attendances" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Satsangs">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Attendances">
+        <PropertyRef Name="SatsangId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Attendance_Sewadar">
+    <End Role="Sewadars" Type="Self.Sewadar" Multiplicity="1" />
+    <End Role="Attendances" Type="Self.Attendance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sewadars">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Attendances">
+        <PropertyRef Name="SewadarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DutyChart_DutyGroup">
+    <End Role="DutyGroups" Type="Self.DutyGroup" Multiplicity="1" />
+    <End Role="DutyCharts" Type="Self.DutyChart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DutyGroups">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DutyCharts">
+        <PropertyRef Name="GroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DutyGroups_Units">
+    <End Role="Units" Type="Self.Unit" Multiplicity="0..1" />
+    <End Role="DutyGroups" Type="Self.DutyGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Units">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="DutyGroups">
+        <PropertyRef Name="UnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Unit_Khetra">
+    <End Role="Khetras" Type="Self.Khetra" Multiplicity="1" />
+    <End Role="Units" Type="Self.Unit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Khetras">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Units">
+        <PropertyRef Name="KhetraId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sewadar_Mahatma">
+    <End Role="Mahatmas" Type="Self.Mahatma" Multiplicity="1" />
+    <End Role="Sewadars" Type="Self.Sewadar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mahatmas">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Sewadars">
+        <PropertyRef Name="MahatmaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satsang_SatsangType">
+    <End Role="SatsangTypes" Type="Self.SatsangType" Multiplicity="1" />
+    <End Role="Satsangs" Type="Self.Satsang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SatsangTypes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Satsangs">
+        <PropertyRef Name="SatsangTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Satsang_Unit">
+    <End Role="Units" Type="Self.Unit" Multiplicity="1" />
+    <End Role="Satsangs" Type="Self.Satsang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Units">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Satsangs">
+        <PropertyRef Name="UnitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sewadar_Designations">
+    <End Role="SewadarDesignations" Type="Self.SewadarDesignation" Multiplicity="0..1" />
+    <End Role="Sewadars" Type="Self.Sewadar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SewadarDesignations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sewadars">
+        <PropertyRef Name="Designation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SNMEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Areas" EntityType="Self.Area" />
+    <EntitySet Name="Attendances" EntityType="Self.Attendance" />
+    <EntitySet Name="DutyCharts" EntityType="Self.DutyChart" />
+    <EntitySet Name="DutyGroups" EntityType="Self.DutyGroup" />
+    <EntitySet Name="Khetras" EntityType="Self.Khetra" />
+    <EntitySet Name="Mahatmas" EntityType="Self.Mahatma" />
+    <EntitySet Name="Satsangs" EntityType="Self.Satsang" />
+    <EntitySet Name="SatsangTypes" EntityType="Self.SatsangType" />
+    <EntitySet Name="SewadarDesignations" EntityType="Self.SewadarDesignation" />
+    <EntitySet Name="Sewadars" EntityType="Self.Sewadar" />
+    <EntitySet Name="Units" EntityType="Self.Unit" />
+    <AssociationSet Name="FK_Area_Unit" Association="Self.FK_Area_Unit">
+      <End Role="Units" EntitySet="Units" />
+      <End Role="Areas" EntitySet="Areas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DutyChart_Area" Association="Self.FK_DutyChart_Area">
+      <End Role="Areas" EntitySet="Areas" />
+      <End Role="DutyCharts" EntitySet="DutyCharts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satsang_Area" Association="Self.FK_Satsang_Area">
+      <End Role="Areas" EntitySet="Areas" />
+      <End Role="Satsangs" EntitySet="Satsangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attendance_Satsang" Association="Self.FK_Attendance_Satsang">
+      <End Role="Satsangs" EntitySet="Satsangs" />
+      <End Role="Attendances" EntitySet="Attendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Attendance_Sewadar" Association="Self.FK_Attendance_Sewadar">
+      <End Role="Sewadars" EntitySet="Sewadars" />
+      <End Role="Attendances" EntitySet="Attendances" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DutyChart_DutyGroup" Association="Self.FK_DutyChart_DutyGroup">
+      <End Role="DutyGroups" EntitySet="DutyGroups" />
+      <End Role="DutyCharts" EntitySet="DutyCharts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DutyGroups_Units" Association="Self.FK_DutyGroups_Units">
+      <End Role="Units" EntitySet="Units" />
+      <End Role="DutyGroups" EntitySet="DutyGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Unit_Khetra" Association="Self.FK_Unit_Khetra">
+      <End Role="Khetras" EntitySet="Khetras" />
+      <End Role="Units" EntitySet="Units" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sewadar_Mahatma" Association="Self.FK_Sewadar_Mahatma">
+      <End Role="Mahatmas" EntitySet="Mahatmas" />
+      <End Role="Sewadars" EntitySet="Sewadars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satsang_SatsangType" Association="Self.FK_Satsang_SatsangType">
+      <End Role="SatsangTypes" EntitySet="SatsangTypes" />
+      <End Role="Satsangs" EntitySet="Satsangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Satsang_Unit" Association="Self.FK_Satsang_Unit">
+      <End Role="Units" EntitySet="Units" />
+      <End Role="Satsangs" EntitySet="Satsangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sewadar_Designations" Association="Self.FK_Sewadar_Designations">
+      <End Role="SewadarDesignations" EntitySet="SewadarDesignations" />
+      <End Role="Sewadars" EntitySet="Sewadars" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
